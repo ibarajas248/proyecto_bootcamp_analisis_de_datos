@@ -138,12 +138,26 @@ def insertPartidos():
 
                 id_tabla_partido += 1
 
+            #conexion localhost
+            """
             conn = mysql.connector.connect(
                 host='localhost',
                 port=3310,
                 user='root',
                 password='',
                 database='futbol'
+            )
+            
+            """
+
+            #conexión clever cloud
+
+            conn = mysql.connector.connect(
+                host='bnlrjjogqqtrux5dkhx3-mysql.services.clever-cloud.com',
+                port=3306,
+                user='ug9k8pdx4fu2lc9p',
+                password='MiyaArHakCa5tGKIRcec',
+                database='bnlrjjogqqtrux5dkhx3'
             )
             cursor = conn.cursor()
             cursor.execute('''
@@ -203,13 +217,14 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
 
         # Crear la tabla si no existe
         create_table_query = """
-            CREATE TABLE IF NOT EXISTS estadisticas_2 (
+            CREATE TABLE IF NOT EXISTS estadisticas (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 id_partido INT NULL,
                 equipo VARCHAR(70) NULL,
                 intervenciones_portero INT,
                 tarjetas_amarillas INT NULL,
                 tarjeta_roja INT NULL,
+                faltas_recibidas INT NULL,
                 faltas_cometidas INT NULL,
                 balones_perdidos INT NULL, 
                 balones_recuperados INT NULL,
@@ -232,6 +247,10 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
                                        soup.find_all('div', class_='stat-wr')[2].find_all('span', class_='stat-val')]
         stats['tarjetas_rojas'] = [int(span.text) for span in
                                    soup.find_all('div', class_='stat-wr')[3].find_all('span', class_='stat-val')]
+
+        stats['faltas_recibidas'] = [int(span.text) for span in
+                                     soup.find_all('div', class_='stat-wr')[5].find_all('span', class_='stat-val')]
+
         stats['faltas_cometidas'] = [int(span.text) for span in
                                      soup.find_all('div', class_='stat-wr')[5].find_all('span', class_='stat-val')]
         stats['balones_perdidos'] = [int(span.text) for span in
@@ -248,21 +267,22 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
             intervenciones_portero = stats['intervenciones_portero'][i]
             tarjetas_amarillas = stats['tarjetas_amarillas'][i]
             tarjetas_rojas = stats['tarjetas_rojas'][i]
+            faltas_recibidas = stats['faltas_recibidas'][i]
             faltas_cometidas = stats['faltas_cometidas'][i]
             balones_perdidos = stats['balones_perdidos'][i]
             balones_recuperados = stats['balones_recuperados'][i]
             fueras_de_juego_en_contra = stats['fueras_de_juego_en_contra'][i]
 
             insert_query = """
-                INSERT INTO estadisticas_2 (
+                INSERT INTO estadisticas (
                     id_partido, equipo, intervenciones_portero, tarjetas_amarillas, 
-                    tarjeta_roja, faltas_cometidas, balones_perdidos, 
+                    tarjeta_roja,faltas_recibidas, faltas_cometidas, balones_perdidos, 
                     balones_recuperados, fuera_de_juego_en_contra
-                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+                ) VALUES (%s, %s, %s, %s,%s, %s, %s, %s, %s, %s)
             """
             cursor.execute(insert_query, (
                 partido_id, equipo, intervenciones_portero, tarjetas_amarillas,
-                tarjetas_rojas, faltas_cometidas, balones_perdidos,
+                tarjetas_rojas,faltas_recibidas, faltas_cometidas, balones_perdidos,
                 balones_recuperados, fueras_de_juego_en_contra
             ))
 

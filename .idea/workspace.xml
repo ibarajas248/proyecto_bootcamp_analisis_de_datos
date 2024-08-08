@@ -4,11 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/WebScrapping/pruebas_2.py" afterDir="false" />
+    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- 1/8/2024">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebScrapping/pruebas.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/pruebas.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,18 +23,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ibarajas248"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ibarajas248&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ibarajas248/proyecto_bootcamp_analisis_de_datos.git",
-    "accountId": "af0e0ae9-d90b-4de9-9567-d36100925378"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ibarajas248/proyecto_bootcamp_analisis_de_datos.git&quot;,
+    &quot;accountId&quot;: &quot;af0e0ae9-d90b-4de9-9567-d36100925378&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -46,16 +44,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.Extrae_Datos_defutbol.executor": "Run",
-    "Python.pruebas.executor": "Run",
-    "Python.pruebas_2.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/David/PycharmProjects/Proyecto_Analisis_de_Datos"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.Extrae_Datos_defutbol.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pruebas.executor&quot;: &quot;Run&quot;,
+    &quot;Python.pruebas_2.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/David/PycharmProjects/Proyecto_Analisis_de_Datos&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\David\PycharmProjects\Proyecto_Analisis_de_Datos\WebScrapping" />
@@ -77,6 +75,19 @@
       <option name="presentableId" value="Default" />
       <updated>1722918412991</updated>
     </task>
+    <task id="LOCAL-00001" summary="-- 1/8/2024">
+      <option name="closed" value="true" />
+      <created>1723126202644</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1723126202644</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="-- 1/8/2024" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- 1/8/2024" />
   </component>
 </project>
