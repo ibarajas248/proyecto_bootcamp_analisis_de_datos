@@ -187,75 +187,93 @@ def insertPartidos():
             print('Partidos insertados exitosamente en la base de datos.')
 
 
-def scraping_stadisticas(cursor, conn, estadistica):
+def scraping_stadisticas(cursor, conn, estadistica, partido_id):
+    print("Iniciando scraping de estadísticas...")
+
     # URL de la página a scrapear
-    url = 'estadistica'  # Reemplaza con la URL real
+    url = estadistica
 
-    # Realiza la solicitud HTTP
-    response = requests.get(url)
-    response.raise_for_status()  # Lanza una excepción si la solicitud falla
+    try:
+        # Realiza la solicitud HTTP
+        response = requests.get(url)
+        response.raise_for_status()  # Lanza una excepción si la solicitud falla
 
-    # Analiza el contenido HTML
-    soup = BeautifulSoup(response.text, 'html.parser')
+        # Analiza el contenido HTML
+        soup = BeautifulSoup(response.content, 'html.parser')
 
-    # Extrae las estadísticas
-    stats = {}
+        # Crear la tabla si no existe
+        create_table_query = """
+            CREATE TABLE IF NOT EXISTS estadisticas_2 (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                id_partido INT NULL,
+                equipo VARCHAR(70) NULL,
+                intervenciones_portero INT,
+                tarjetas_amarillas INT NULL,
+                tarjeta_roja INT NULL,
+                faltas_cometidas INT NULL,
+                balones_perdidos INT NULL, 
+                balones_recuperados INT NULL,
+                fuera_de_juego_en_contra INT NULL,
+                FOREIGN KEY (id_partido) REFERENCES partidos(id) ON DELETE CASCADE
+            )
+        """
+        cursor.execute(create_table_query)
 
-    # Extrae posesión
-    posesion_div = soup.find('div', class_='stat-posesion')  # Ajusta el selector
-    if posesion_div:
-        stats['posesion'] = posesion_div.find('span', class_='stat-val').text.strip()
+        # Extraer los nombres de los equipos
+        teams = soup.find_all('a', class_='team-banner')
+        team_names = [team.find('span', class_='team-name').text.strip() for team in teams]
 
-    # Extrae intervenciones del portero
-    intervenciones_div = soup.find('div', class_='stat-intervenciones')  # Ajusta el selector
-    if intervenciones_div:
-        stats['intervenciones'] = intervenciones_div.find('span', class_='stat-val').text.strip()
+        # Extraer las estadísticas
+        stats = {}
+        stats['intervenciones_portero'] = [int(span.text) for span in
+                                           soup.find_all('div', class_='stat-wr')[1].find_all('span',
+                                                                                              class_='stat-val')]
+        stats['tarjetas_amarillas'] = [int(span.text) for span in
+                                       soup.find_all('div', class_='stat-wr')[2].find_all('span', class_='stat-val')]
+        stats['tarjetas_rojas'] = [int(span.text) for span in
+                                   soup.find_all('div', class_='stat-wr')[3].find_all('span', class_='stat-val')]
+        stats['faltas_cometidas'] = [int(span.text) for span in
+                                     soup.find_all('div', class_='stat-wr')[5].find_all('span', class_='stat-val')]
+        stats['balones_perdidos'] = [int(span.text) for span in
+                                     soup.find_all('div', class_='stat-wr')[6].find_all('span', class_='stat-val')]
+        stats['balones_recuperados'] = [int(span.text) for span in
+                                        soup.find_all('div', class_='stat-wr')[7].find_all('span', class_='stat-val')]
+        stats['fueras_de_juego_en_contra'] = [int(span.text) for span in
+                                              soup.find_all('div', class_='stat-wr')[8].find_all('span',
+                                                                                                 class_='stat-val')]
 
-    # Extrae tarjetas amarillas
-    tarjetas_amarillas_div = soup.find('div', class_='stat-tarjetas-amarillas')  # Ajusta el selector
-    if tarjetas_amarillas_div:
-        stats['tarjetas_amarillas'] = tarjetas_amarillas_div.find('span', class_='stat-val').text.strip()
+        # Insertar las estadísticas en la base de datos
+        for i in range(2):  # Asumiendo que siempre hay dos equipos
+            equipo = team_names[i]
+            intervenciones_portero = stats['intervenciones_portero'][i]
+            tarjetas_amarillas = stats['tarjetas_amarillas'][i]
+            tarjetas_rojas = stats['tarjetas_rojas'][i]
+            faltas_cometidas = stats['faltas_cometidas'][i]
+            balones_perdidos = stats['balones_perdidos'][i]
+            balones_recuperados = stats['balones_recuperados'][i]
+            fueras_de_juego_en_contra = stats['fueras_de_juego_en_contra'][i]
 
-    # Extrae tarjetas rojas
-    tarjetas_rojas_div = soup.find('div', class_='stat-tarjetas-rojas')  # Ajusta el selector
-    if tarjetas_rojas_div:
-        stats['tarjetas_rojas'] = tarjetas_rojas_div.find('span', class_='stat-val').text.strip()
+            insert_query = """
+                INSERT INTO estadisticas_2 (
+                    id_partido, equipo, intervenciones_portero, tarjetas_amarillas, 
+                    tarjeta_roja, faltas_cometidas, balones_perdidos, 
+                    balones_recuperados, fuera_de_juego_en_contra
+                ) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            cursor.execute(insert_query, (
+                partido_id, equipo, intervenciones_portero, tarjetas_amarillas,
+                tarjetas_rojas, faltas_cometidas, balones_perdidos,
+                balones_recuperados, fueras_de_juego_en_contra
+            ))
 
-    # Extrae faltas recibidas
-    faltas_recibidas_div = soup.find('div', class_='stat-faltas-recibidas')  # Ajusta el selector
-    if faltas_recibidas_div:
-        stats['faltas_recibidas'] = faltas_recibidas_div.find('span', class_='stat-val').text.strip()
+        conn.commit()
+        print("Datos insertados correctamente.")
 
-    # Extrae faltas cometidas
-    faltas_cometidas_div = soup.find('div', class_='stat-faltas-cometidas')  # Ajusta el selector
-    if faltas_cometidas_div:
-        stats['faltas_cometidas'] = faltas_cometidas_div.find('span', class_='stat-val').text.strip()
+        return stats
 
-    # Extrae balones perdidos
-    balones_perdidos_div = soup.find('div', class_='stat-balones-perdidos')  # Ajusta el selector
-    if balones_perdidos_div:
-        stats['balones_perdidos'] = balones_perdidos_div.find('span', class_='stat-val').text.strip()
-
-    # Extrae balones recuperados
-    balones_recuperados_div = soup.find('div', class_='stat-balones-recuperados')  # Ajusta el selector
-    if balones_recuperados_div:
-        stats['balones_recuperados'] = balones_recuperados_div.find('span', class_='stat-val').text.strip()
-
-    # Extrae fueras de juego en contra
-    fueras_de_juego_div = soup.find('div', class_='stat-fueras-de-juego')  # Ajusta el selector
-    if fueras_de_juego_div:
-        stats['fueras_de_juego'] = fueras_de_juego_div.find('span', class_='stat-val').text.strip()
-
-    # Imprime los datos obtenidos
-    print("Datos obtenidos:")
-    for key, value in stats.items():
-        print(f"{key}: {value}")
-
-    # Aquí puedes hacer la lógica para guardar los datos en la base de datos
-    # cursor.execute('INSERT INTO estadisticas ...', (stats['posesion'], ...))
-    # conn.commit()
-
-    return stats
+    except requests.RequestException as e:
+        print(f"Error al realizar la solicitud HTTP: {e}")
+        return None
 
 
 def procesar_goles(cursor, conn, partidosConURL):
@@ -283,6 +301,10 @@ def procesar_goles(cursor, conn, partidosConURL):
 
                 if local_scorers:
                     insertar_goleadores(cursor, conn, partido_id, local_scorers, partido_data[1])
+
+
+
+
                 else:
                     print(f"No se encontraron goleadores locales en {partido_url}")
 
@@ -317,26 +339,28 @@ def procesar_goles(cursor, conn, partidosConURL):
             except AttributeError:
                 print(f"Error al extraer goleadores visitantes en {partido_url}")
 
-            try:
-                nav = soup_partido.find('nav', class_='nav-hor-wr sh')
-                if nav:
-                    # Encontrar todos los elementos <a> dentro del nav
-                    links = nav.find_all('a')
+            #Extrae URL
+            nav = soup_partido.find('nav', class_='nav-hor-wr sh')
+            if nav:
+                # Encontrar todos los elementos <a> dentro del nav
+                links = nav.find_all('a')
 
-                    for link in links:
-                        href = link.get('href')
-                        text = link.get_text(strip=True)
-                        if text=="ESTADÍSTICAS":
-                            estadistica="https://colombia.as.com/"+href;
-                            print(f"Texto: {text}, Enlace: {estadistica}")
-                            scraping_stadisticas(cursor, conn,estadistica)
-
-                            #print(f"Texto: {text}, Enlace: {href}")
+                for link in links:
+                    href = link.get('href')
+                    text = link.get_text(strip=True)
+                    if text == "ESTADÍSTICAS":
+                        estadistica = "https://colombia.as.com/" + href;
+                        print(f"Texto: {text}, Enlace: {estadistica}")
+                        scraping_stadisticas(cursor, conn, estadistica,partido_id)
 
 
 
-            except:
-                print("no se encuentran estadisticas")
+
+
+
+
+
+
 
 
         else:

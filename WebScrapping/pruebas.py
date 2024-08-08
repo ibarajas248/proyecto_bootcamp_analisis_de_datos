@@ -14,7 +14,7 @@ if response.status_code == 200:
 
     # Extraer el nombre de los equipos y las estadísticas
     teams = soup.select('.team-banner')
-    stats = soup.select('.stat-wr')
+
 
     # Procesar y mostrar los nombres de los equipos y sus logos
     for team in teams:
@@ -22,6 +22,8 @@ if response.status_code == 200:
         team_logo = team.select_one('.team-logo img')['src']
         print(f'Team Name: {team_name}')
         print(f'Team Logo URL: {team_logo}')
+
+    stats = soup.select('.stat-wr')
 
     # Procesar y mostrar las estadísticas
     for stat in stats:
