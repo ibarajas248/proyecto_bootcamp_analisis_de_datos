@@ -36,8 +36,10 @@ def insertar_goleadores(cursor, conn, partido_id, scorers, equipo):
     conn.commit()
 
 def insertPartidos():
-    year = 2024
+    year = 2018
     id_tabla_partido = 10000
+    cambio_mes = False
+
 
     for numero in range(1, 30):
         url = f'https://colombia.as.com/resultados/futbol/francia/2018_2019/jornada/regular_a_{numero}'
@@ -122,6 +124,13 @@ def insertPartidos():
                     fecha_str_con_año = f'{year} {fecha_hora}'
                     try:
                         fecha = datetime.strptime(fecha_str_con_año, '%Y %d/%m %H:%M')
+
+
+                        if fecha.month == 1 and cambio_mes==False :  # January of the following year
+                            year += 1  # Increment the year to 2025
+                            fecha = fecha.replace(year=year)  # Update the date with the new year
+                            cambio_mes= True
+
                     except ValueError as e:
                         print(f'Error al convertir fecha {fecha_str_con_año}: {e}')
                         continue
@@ -372,14 +381,6 @@ def procesar_goles(cursor, conn, partidosConURL):
                         estadistica = "https://colombia.as.com/" + href;
                         print(f"Texto: {text}, Enlace: {estadistica}")
                         scraping_stadisticas(cursor, conn, estadistica,partido_id)
-
-
-
-
-
-
-
-
 
 
 
