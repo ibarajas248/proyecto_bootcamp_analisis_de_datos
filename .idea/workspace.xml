@@ -5,8 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 1_ok">
+      <change afterPath="$PROJECT_DIR$/ANALISIS BUNDESLIGA.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Analisis_premiere_league.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analisis 31_7_2024 liga española.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ligue_1_2018_2019.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/ligue_1_2018_2019.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,18 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Extrae_Datos_defutbol.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pruebas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pruebas_2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/David/PycharmProjects/Proyecto_Analisis_de_Datos&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Extrae_Datos_defutbol.executor": "Run",
+    "Python.pruebas.executor": "Run",
+    "Python.pruebas_2.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/David/PycharmProjects/Proyecto_Analisis_de_Datos"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\David\PycharmProjects\Proyecto_Analisis_de_Datos" />
+      <recent name="C:\Users\David\PycharmProjects\Proyecto_Analisis_de_Datos\WebScrapping" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\David\PycharmProjects\Proyecto_Analisis_de_Datos" />
       <recent name="C:\Users\David\PycharmProjects\Proyecto_Analisis_de_Datos\WebScrapping" />
     </key>
   </component>
@@ -91,7 +99,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723128464462</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="-- webscrapping parcial 1_ok">
+      <option name="closed" value="true" />
+      <created>1723178970871</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1723178970871</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
