@@ -6,6 +6,7 @@ import re
 
 def clean_minute_format(gol):
     return gol.split('(')[0]
+#dd
 
 def extraer_nombre(scorer):
     match = re.match(r"([^\d]+)", scorer)
@@ -36,13 +37,13 @@ def insertar_goleadores(cursor, conn, partido_id, scorers, equipo):
     conn.commit()
 
 def insertPartidos():
-    year = 2018
-    id_tabla_partido = 10000
+    year = 2023
+    id_tabla_partido = 15000
     cambio_mes = False
 
 
-    for numero in range(1, 30):
-        url = f'https://colombia.as.com/resultados/futbol/francia/2018_2019/jornada/regular_a_{numero}'
+    for numero in range(1, 39):
+        url = f'https://colombia.as.com/resultados/futbol/francia/2023_2024/jornada/regular_a_{numero}'
         response = requests.get(url)
 
         if response.status_code == 200:
@@ -193,9 +194,10 @@ def insertPartidos():
             )
             ''')
 
-            if numero == 1:
-                cursor.execute('DELETE FROM goles')
-                cursor.execute('DELETE FROM partidos')
+            #if numero == 1:
+                #cursor.execute('DELETE FROM goles')
+                #cursor.execute('DELETE FROM partidos')
+
 
             cursor.executemany(
                 'INSERT INTO partidos (id, local, goles_local, goles_visitante, visitante, fecha, jornada,liga) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)',

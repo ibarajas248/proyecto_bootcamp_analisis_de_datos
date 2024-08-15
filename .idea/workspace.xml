@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 2_ok" />
+    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 2_ok">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +130,23 @@
       <option name="project" value="LOCAL" />
       <updated>1723220592122</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="-- webscrapping parcial 2_ok">
+      <option name="closed" value="true" />
+      <created>1723220965145</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1723220965145</updated>
+    </task>
+    <task id="LOCAL-00008" summary="-- webscrapping parcial 2_ok">
+      <option name="closed" value="true" />
+      <created>1723225501475</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1723225501475</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
