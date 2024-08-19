@@ -149,7 +149,7 @@ def insertPartidos():
                 id_tabla_partido += 1
 
             #conexion localhost
-            """
+
             conn = mysql.connector.connect(
                 host='localhost',
                 port=3310,
@@ -158,10 +158,10 @@ def insertPartidos():
                 database='futbol'
             )
             
-            """
+
 
             #conexión clever cloud
-
+            """
             conn = mysql.connector.connect(
                 host='bnlrjjogqqtrux5dkhx3-mysql.services.clever-cloud.com',
                 port=3306,
@@ -169,6 +169,7 @@ def insertPartidos():
                 password='MiyaArHakCa5tGKIRcec',
                 database='bnlrjjogqqtrux5dkhx3'
             )
+            """
             cursor = conn.cursor()
             cursor.execute('''
             CREATE TABLE IF NOT EXISTS partidos (
@@ -271,6 +272,13 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
         stats['fueras_de_juego_en_contra'] = [int(span.text) for span in
                                               soup.find_all('div', class_='stat-wr')[8].find_all('span',
                                                                                                  class_='stat-val')]
+
+        # Encuentra los elementos con clase 'stat-val'
+        possession_values = soup.find_all('span', class_='stat-val')
+
+        # Extrae el texto de cada elemento
+        team1_possession = possession_values[0].text
+        team2_possession = possession_values[1].text
 
         # Insertar las estadísticas en la base de datos
         for i in range(2):  # Asumiendo que siempre hay dos equipos
