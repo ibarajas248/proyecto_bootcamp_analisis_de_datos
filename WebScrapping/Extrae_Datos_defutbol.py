@@ -43,7 +43,7 @@ def insertPartidos():
 
 
     for numero in range(1, 39):
-        url = f'https://colombia.as.com/resultados/futbol/francia/2023_2024/jornada/regular_a_{numero}'
+        url = f'https://colombia.as.com/resultados/futbol/colombia_i/2018/jornada/regular_a_{numero}'
         response = requests.get(url)
 
         if response.status_code == 200:
@@ -195,9 +195,9 @@ def insertPartidos():
             )
             ''')
 
-            #if numero == 1:
-                #cursor.execute('DELETE FROM goles')
-                #cursor.execute('DELETE FROM partidos')
+            if numero == 1:
+                cursor.execute('DELETE FROM goles')
+                cursor.execute('DELETE FROM partidos')
 
 
             cursor.executemany(
@@ -241,6 +241,7 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
                 balones_perdidos INT NULL, 
                 balones_recuperados INT NULL,
                 fuera_de_juego_en_contra INT NULL,
+                pocesion VARCHAR(5) NULL,
                 FOREIGN KEY (id_partido) REFERENCES partidos(id) ON DELETE CASCADE
             )
         """
@@ -273,12 +274,11 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
                                               soup.find_all('div', class_='stat-wr')[8].find_all('span',
                                                                                                  class_='stat-val')]
 
-        # Encuentra los elementos con clase 'stat-val'
-        possession_values = soup.find_all('span', class_='stat-val')
+        stats['pocesion']=soup.find_all('span', class_='stat-val')
 
-        # Extrae el texto de cada elemento
-        team1_possession = possession_values[0].text
-        team2_possession = possession_values[1].text
+
+
+
 
         # Insertar las estadísticas en la base de datos
         for i in range(2):  # Asumiendo que siempre hay dos equipos
@@ -291,18 +291,21 @@ def scraping_stadisticas(cursor, conn, estadistica, partido_id):
             balones_perdidos = stats['balones_perdidos'][i]
             balones_recuperados = stats['balones_recuperados'][i]
             fueras_de_juego_en_contra = stats['fueras_de_juego_en_contra'][i]
+            pocesion =stats['pocesion'][i].text
+            # Extrae el texto de cada elemento
+
 
             insert_query = """
                 INSERT INTO estadisticas (
                     id_partido, equipo, intervenciones_portero, tarjetas_amarillas, 
                     tarjeta_roja,faltas_recibidas, faltas_cometidas, balones_perdidos, 
-                    balones_recuperados, fuera_de_juego_en_contra
-                ) VALUES (%s, %s, %s, %s,%s, %s, %s, %s, %s, %s)
+                    balones_recuperados, fuera_de_juego_en_contra,pocesion
+                ) VALUES (%s, %s, %s, %s,%s, %s, %s, %s, %s, %s, %s)
             """
             cursor.execute(insert_query, (
                 partido_id, equipo, intervenciones_portero, tarjetas_amarillas,
                 tarjetas_rojas,faltas_recibidas, faltas_cometidas, balones_perdidos,
-                balones_recuperados, fueras_de_juego_en_contra
+                balones_recuperados, fueras_de_juego_en_contra,pocesion
             ))
 
         conn.commit()

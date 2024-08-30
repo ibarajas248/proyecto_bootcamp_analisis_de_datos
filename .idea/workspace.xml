@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 2_ok_">
+    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 3_ok_">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WebScrapping/pruebas_2.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/pruebas_2.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -155,7 +154,15 @@
       <option name="project" value="LOCAL" />
       <updated>1723748601641</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-- webscrapping parcial 3_ok_">
+      <option name="closed" value="true" />
+      <created>1724103806224</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1724103806224</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +181,7 @@
     <MESSAGE value="-- webscrapping parcial 1_ok" />
     <MESSAGE value="-- webscrapping parcial 2_ok" />
     <MESSAGE value="-- webscrapping parcial 2_ok_" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- webscrapping parcial 2_ok_" />
+    <MESSAGE value="-- webscrapping parcial 3_ok_" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- webscrapping parcial 3_ok_" />
   </component>
 </project>
