@@ -4,9 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 3_ok_">
+    <list default="true" id="8ad930b1-0387-4d7c-9ec7-824502114311" name="Changes" comment="-- webscrapping parcial 4_ok_">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" beforeDir="false" afterPath="$PROJECT_DIR$/WebScrapping/Extrae_Datos_defutbol.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analisis de datos/ANALISIS BUNDESLIGA.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/analisis de datos/ANALISIS BUNDESLIGA.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analisis de datos/Estadisticas_.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/analisis de datos/Estadisticas_.ipynb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,16 +46,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.Extrae_Datos_defutbol.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pruebas.executor&quot;: &quot;Run&quot;,
-    &quot;Python.pruebas_2.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/David/PycharmProjects/Proyecto_Analisis_de_Datos&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.Extrae_Datos_defutbol.executor": "Run",
+    "Python.pruebas.executor": "Run",
+    "Python.pruebas_2.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/David/PycharmProjects/Proyecto_Analisis_de_Datos"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\David\PycharmProjects\Proyecto_Analisis_de_Datos" />
@@ -162,7 +164,15 @@
       <option name="project" value="LOCAL" />
       <updated>1724103806224</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="-- webscrapping parcial 4_ok_">
+      <option name="closed" value="true" />
+      <created>1724998893991</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1724998893991</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -182,6 +192,7 @@
     <MESSAGE value="-- webscrapping parcial 2_ok" />
     <MESSAGE value="-- webscrapping parcial 2_ok_" />
     <MESSAGE value="-- webscrapping parcial 3_ok_" />
-    <option name="LAST_COMMIT_MESSAGE" value="-- webscrapping parcial 3_ok_" />
+    <MESSAGE value="-- webscrapping parcial 4_ok_" />
+    <option name="LAST_COMMIT_MESSAGE" value="-- webscrapping parcial 4_ok_" />
   </component>
 </project>

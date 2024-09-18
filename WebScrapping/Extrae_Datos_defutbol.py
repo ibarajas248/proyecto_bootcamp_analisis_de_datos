@@ -42,8 +42,8 @@ def insertPartidos():
     cambio_mes = False
 
 
-    for numero in range(1, 39):
-        url = f'https://colombia.as.com/resultados/futbol/colombia_i/2018/jornada/regular_a_{numero}'
+    for numero in range(1, 6):
+        url = f'https://colombia.as.com/resultados/futbol/inglaterra/2024_2025/jornada/regular_a_{numero}'
         response = requests.get(url)
 
         if response.status_code == 200:
